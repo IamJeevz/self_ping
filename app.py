@@ -20,12 +20,12 @@ def ping_every_30_minutes():
         print("Pinging URLs...")
         for url in URLS:
             try:
-                response = requests.head(url, timeout=10)
+                response = requests.head(url, timeout=60)
                 print(f"[HEAD] {url} -> {response.status_code}")
             except Exception as e:
                 print(f"[HEAD] {url} -> Error: {e}")
-        print("Sleeping for 2 minutes...\n")
-        time.sleep(120)  # 30 minutes
+        print("Sleeping for 30 minutes...\n")
+        time.sleep(1800)  # 30 minutes
 
 # Lifespan context: starts background thread safely
 @asynccontextmanager
