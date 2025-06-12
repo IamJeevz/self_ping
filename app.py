@@ -26,7 +26,7 @@ def ping_every_10_minutes():
             except Exception as e:
                 print(f"[HEAD] {url} -> Error: {e}")
         print("Sleeping for 10 minutes...\n")
-        time.sleep(600)  # 10 minutes
+        time.sleep(120)  # 10 minutes
 
 # Lifespan context: starts background thread safely
 @asynccontextmanager
