@@ -24,7 +24,7 @@ def ping_every_30_minutes():
                 print(f"[HEAD] {url} -> {response.status_code}")
             except Exception as e:
                 print(f"[HEAD] {url} -> Error: {e}")
-        print("Sleeping for 30 minutes...\n")
+        print("Sleeping for 2 minutes...\n")
         time.sleep(120)  # 30 minutes
 
 # Lifespan context: starts background thread safely
