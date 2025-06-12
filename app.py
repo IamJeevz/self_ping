@@ -5,7 +5,7 @@ import time
 from contextlib import asynccontextmanager
 
 # Self URL for local testing
-SELF_URL = "http://127.0.0.1:8000"
+SELF_URL = "https://self-ping.onrender.com"
 
 # List of URLs to ping
 URLS = [
