@@ -10,8 +10,7 @@ from contextlib import asynccontextmanager
 # List of URLs to ping
 URLS = [
     "https://self-ping.onrender.com",
-    "https://resume-wzmz.onrender.com",
-    "https://lunch-form.onrender.com"
+    "https://lunch-web.onrender.com"
     
 ]
 
