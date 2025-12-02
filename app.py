@@ -20,13 +20,13 @@ def ping_every_10_minutes():
                 print(f"[GET] {url} -> {response.status_code}")
             except Exception as e:
                 print(f"[GET] {url} -> Error: {e}")
-        print("Sleeping for 10 minutes...\n")
-        time.sleep(600)  # 10 minutes
+        print("Sleeping for 2 minutes...\n")
+        time.sleep(120)  # 2 minutes
 
 # Lifespan context: starts background thread safely
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    thread = threading.Thread(target=ping_every_10_minutes, daemon=True)
+    thread = threading.Thread(target=ping_every_2_minutes, daemon=True)
     thread.start()
     yield  # Run the app
 
