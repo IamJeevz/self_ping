@@ -11,7 +11,7 @@ URLS = [
 ]
 
 # Function to make GET requests every 10 minutes
-def ping_every_10_minutes():
+def ping_every_n_minutes():
     while True:
         print("Pinging URLs...")
         for url in URLS:
@@ -26,7 +26,7 @@ def ping_every_10_minutes():
 # Lifespan context: starts background thread safely
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    thread = threading.Thread(target=ping_every_2_minutes, daemon=True)
+    thread = threading.Thread(target=ping_every_n_minutes, daemon=True)
     thread.start()
     yield  # Run the app
 
