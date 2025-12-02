@@ -37,6 +37,6 @@ app = FastAPI(lifespan=lifespan)
 def root():
     return {"status": "Ping scheduler is running."}
 
-@app.head("/")
-def root_head():
+@app.get("/")
+def root_get():
     return Response(status_code=200)
