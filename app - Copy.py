@@ -4,24 +4,28 @@ import threading
 import time
 from contextlib import asynccontextmanager
 
+
+
+
 # List of URLs to ping
 URLS = [
     "https://self-ping.onrender.com",
     "https://lunch-web.onrender.com"
+    
 ]
 
-# Function to make GET requests every 10 minutes
+# Function to make HEAD requests every 10 minutes
 def ping_every_10_minutes():
     while True:
         print("Pinging URLs...")
         for url in URLS:
             try:
-                response = requests.get(url, timeout=60)
-                print(f"[GET] {url} -> {response.status_code}")
+                response = requests.head(url, timeout=60)
+                print(f"[HEAD] {url} -> {response.status_code}")
             except Exception as e:
-                print(f"[GET] {url} -> Error: {e}")
+                print(f"[HEAD] {url} -> Error: {e}")
         print("Sleeping for 10 minutes...\n")
-        time.sleep(600)  # 10 minutes
+        time.sleep(120)  # 10 minutes
 
 # Lifespan context: starts background thread safely
 @asynccontextmanager
@@ -29,6 +33,7 @@ async def lifespan(app: FastAPI):
     thread = threading.Thread(target=ping_every_10_minutes, daemon=True)
     thread.start()
     yield  # Run the app
+    # Thread will exit when app shuts down
 
 # FastAPI app with lifespan
 app = FastAPI(lifespan=lifespan)
